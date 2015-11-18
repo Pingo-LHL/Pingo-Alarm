@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface AlarmViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 @end

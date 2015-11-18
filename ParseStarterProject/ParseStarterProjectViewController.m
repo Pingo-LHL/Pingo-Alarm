@@ -23,6 +23,11 @@
     PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
     testObject[@"foo"] = @"bar";
     [testObject saveInBackground];
+    
+    
+    PFObject *Sam = [PFObject objectWithClassName:@"Sam"];
+    Sam[@"Sam"] = @"Sammy";
+    [Sam saveInBackground];
 }
 
 - (void)didReceiveMemoryWarning {

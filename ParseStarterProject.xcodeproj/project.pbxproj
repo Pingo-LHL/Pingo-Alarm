@@ -18,6 +18,7 @@
 		09ABC08813A1D52E009C3FCF /* ParseStarterProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09ABC08713A1D52E009C3FCF /* ParseStarterProjectViewController.m */; };
 		09BEF34C13D51C3F001BBCDB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09BEF34B13D51C3F001BBCDB /* Security.framework */; };
 		2BCE22731BFD19BA008CA790 /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCE22721BFD19BA008CA790 /* AlarmViewController.m */; };
+		2BCE22751BFD2ACE008CA790 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BCE22741BFD2ACE008CA790 /* Main.storyboard */; };
 		2FCDD6B014A573F500295AAC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCDD6AF14A573F500295AAC /* QuartzCore.framework */; };
 		4998650515BF305000803E05 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4998650415BF305000803E05 /* StoreKit.framework */; };
 		743D7B6D157DA60100084B67 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 743D7B6C157DA60100084B67 /* CoreGraphics.framework */; };
@@ -50,6 +51,7 @@
 		09BEF34B13D51C3F001BBCDB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		2BCE22711BFD19BA008CA790 /* AlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmViewController.h; sourceTree = "<group>"; };
 		2BCE22721BFD19BA008CA790 /* AlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmViewController.m; sourceTree = "<group>"; };
+		2BCE22741BFD2ACE008CA790 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2FCDD6AF14A573F500295AAC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4998650415BF305000803E05 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		6332375315E438E900AE2736 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -134,6 +136,7 @@
 				09ABC08713A1D52E009C3FCF /* ParseStarterProjectViewController.m */,
 				2BCE22711BFD19BA008CA790 /* AlarmViewController.h */,
 				2BCE22721BFD19BA008CA790 /* AlarmViewController.m */,
+				2BCE22741BFD2ACE008CA790 /* Main.storyboard */,
 				814C3AB91B69864600E307BB /* ParseStarterProjectViewController.xib */,
 				09ABC07813A1D52D009C3FCF /* Other Sources */,
 			);
@@ -213,7 +216,7 @@
 				LastUpgradeCheck = 0710;
 				TargetAttributes = {
 					09ABC06C13A1D52D009C3FCF = {
-						DevelopmentTeam = 37Y9P8B6JV;
+						DevelopmentTeam = 2VGL7CT34X;
 					};
 				};
 			};
@@ -239,6 +242,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BCE22751BFD2ACE008CA790 /* Main.storyboard in Resources */,
 				814C3ABE1B69864600E307BB /* Default.png in Resources */,
 				814C3AC21B69864600E307BB /* ParseStarterProjectViewController.xib in Resources */,
 				814C3ABF1B69864600E307BB /* Default@2x.png in Resources */,
@@ -350,7 +354,7 @@
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.parse.Pingo-Alarm";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ToyBoxMedia.Chipmunk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -370,7 +374,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.parse.Pingo-Alarm";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ToyBoxMedia.Chipmunk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				VALIDATE_PRODUCT = YES;

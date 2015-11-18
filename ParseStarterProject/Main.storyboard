@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Fz6-Kt-RR2">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Alarm View Controller-->
+        <scene sceneID="4vd-JX-NkD">
+            <objects>
+                <viewController id="Fz6-Kt-RR2" customClass="AlarmViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kbt-hx-Hu0"/>
+                        <viewControllerLayoutGuide type="bottom" id="LJy-p5-Fu2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JR9-v8-UQl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="e6K-Wx-TsU">
+                                <rect key="frame" x="0.0" y="61" width="600" height="215"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="600" id="8wC-7R-c2r"/>
+                                    <constraint firstAttribute="height" constant="215" id="dWm-yK-TeR"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="469576423.83093101">
+                                    <!--2015-11-18 21:53:43 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BuF-V2-zOl">
+                                <rect key="frame" x="449" y="454" width="48" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelAlarm:" destination="Fz6-Kt-RR2" eventType="touchUpInside" id="IAf-Mh-u8i"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WW5-6s-Evy">
+                                <rect key="frame" x="153" y="454" width="30" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Set"/>
+                                <connections>
+                                    <action selector="setAlarm:" destination="Fz6-Kt-RR2" eventType="touchUpInside" id="mb0-aP-UXQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WW5-6s-Evy" firstAttribute="leading" secondItem="JR9-v8-UQl" secondAttribute="leadingMargin" constant="30" id="2We-s8-yw9"/>
+                            <constraint firstItem="e6K-Wx-TsU" firstAttribute="top" secondItem="kbt-hx-Hu0" secondAttribute="bottom" constant="41" id="DNr-CQ-t2A"/>
+                            <constraint firstItem="LJy-p5-Fu2" firstAttribute="top" secondItem="WW5-6s-Evy" secondAttribute="bottom" constant="116" id="GnM-k9-3LE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BuF-V2-zOl" secondAttribute="trailing" constant="83" id="SdN-8h-8hE"/>
+                            <constraint firstItem="e6K-Wx-TsU" firstAttribute="leading" secondItem="JR9-v8-UQl" secondAttribute="leadingMargin" constant="-20" id="UjR-9B-T8c"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="e6K-Wx-TsU" secondAttribute="trailing" constant="-20" id="VFA-my-GrN"/>
+                            <constraint firstItem="LJy-p5-Fu2" firstAttribute="top" secondItem="BuF-V2-zOl" secondAttribute="bottom" constant="116" id="zgC-Mh-cP2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="alarmPicker" destination="e6K-Wx-TsU" id="VOB-qm-yzu"/>
+                        <outlet property="datePicker" destination="e6K-Wx-TsU" id="VHP-j7-qji"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IfQ-4j-a0A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="553" y="239"/>
+        </scene>
+    </scenes>
+</document>
