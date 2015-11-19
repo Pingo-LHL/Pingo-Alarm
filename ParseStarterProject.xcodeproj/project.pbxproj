@@ -21,6 +21,7 @@
 		2BCE22731BFD19BA008CA790 /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCE22721BFD19BA008CA790 /* AlarmViewController.m */; };
 		2BCE22751BFD2ACE008CA790 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BCE22741BFD2ACE008CA790 /* Main.storyboard */; };
 		2BE547DD1BFD5F3300603276 /* default.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2BE547DC1BFD5F3300603276 /* default.wav */; };
+		2BE547E01BFD8C4A00603276 /* 26961__rfriend__divingalarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2BE547DF1BFD8C4A00603276 /* 26961__rfriend__divingalarm.wav */; };
 		2FCDD6B014A573F500295AAC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCDD6AF14A573F500295AAC /* QuartzCore.framework */; };
 		4998650515BF305000803E05 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4998650415BF305000803E05 /* StoreKit.framework */; };
 		743D7B6D157DA60100084B67 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 743D7B6C157DA60100084B67 /* CoreGraphics.framework */; };
@@ -55,6 +56,7 @@
 		2BCE22721BFD19BA008CA790 /* AlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmViewController.m; sourceTree = "<group>"; };
 		2BCE22741BFD2ACE008CA790 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2BE547DC1BFD5F3300603276 /* default.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = default.wav; sourceTree = "<group>"; };
+		2BE547DF1BFD8C4A00603276 /* 26961__rfriend__divingalarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 26961__rfriend__divingalarm.wav; sourceTree = "<group>"; };
 		2FCDD6AF14A573F500295AAC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4998650415BF305000803E05 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		6332375315E438E900AE2736 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -133,6 +135,7 @@
 				09ABC08013A1D52D009C3FCF /* ParseStarterProjectAppDelegate.h */,
 				09ABC08113A1D52D009C3FCF /* ParseStarterProjectAppDelegate.m */,
 				814C3AB71B69864600E307BB /* MainWindow.xib */,
+				2BE547DF1BFD8C4A00603276 /* 26961__rfriend__divingalarm.wav */,
 				2BE547DE1BFD5F4300603276 /* Sounds */,
 				09ABC08613A1D52E009C3FCF /* ParseStarterProjectViewController.h */,
 				09ABC08713A1D52E009C3FCF /* ParseStarterProjectViewController.m */,
@@ -270,6 +273,7 @@
 				814C3ABF1B69864600E307BB /* Default@2x.png in Resources */,
 				2BE547DD1BFD5F3300603276 /* default.wav in Resources */,
 				814C3ABD1B69864600E307BB /* Default-568h@2x.png in Resources */,
+				2BE547E01BFD8C4A00603276 /* 26961__rfriend__divingalarm.wav in Resources */,
 				814C3AC11B69864600E307BB /* MainWindow.xib in Resources */,
 				814C3AC01B69864600E307BB /* InfoPlist.strings in Resources */,
 			);

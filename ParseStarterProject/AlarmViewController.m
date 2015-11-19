@@ -20,7 +20,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-
+    
+    [NSTimer scheduledTimerWithTimeInterval:30.0f
+                                     target:self
+                                   selector:@selector(retriveAlarm:)
+                                   userInfo:nil
+                                    repeats:YES];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -139,16 +145,26 @@
     
     PFObject *alarmObject = [PFObject objectWithClassName:@"AlarmObject"];
     alarmObject[@"dateObj"] = self.datePicker.date;
+    alarmObject[@"createdBy"] = [PFUser currentUser].username;
+    alarmObject[@"createdFor"] = @"kelo";
+    
+    
     
    
     [alarmObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             // The object has been saved.
+            
+            if (alarmObject[@"createdFor"] == [PFUser currentUser].username) {
+                [self alarmNotification:self.datePicker.date];
+            }
         } else {
             // There was a problem, check error.description
         }
     }];
-    [self alarmNotification:self.datePicker.date];
+    
+    
+    
     
 }
 - (IBAction)cancelAlarm:(id)sender {
@@ -156,11 +172,31 @@
     NSLog(@"cancel alarm");
 }
 
--(void)retriveAlarm{
+-(void)retriveAlarm:(NSTimer*) timer{
     PFQuery *query = [PFQuery queryWithClassName:@"AlarmObject"];
-    [query getObjectInBackgroundWithId:@"xWMyZ4YEGZ" block:^(PFObject *alarmObject, NSError *error) {
-        // Do something with the returned PFObject in the gameScore variable.
-        NSLog(@"%@", alarmObject);
+    
+    [query whereKey:@"createdFor" equalTo:[PFUser currentUser].username];
+    [query whereKey:@"dateObj" greaterThan:[NSDate date]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %d alarms.", objects.count);
+            // Do something with the found objects
+            for (PFObject *object in objects) {
+                NSLog(@"%@", object.objectId);
+
+                NSDate *utcTime = object[@"dateObj"];
+                NSTimeInterval timeZoneSeconds = [[NSTimeZone localTimeZone] secondsFromGMT];
+                NSDate *local = [utcTime dateByAddingTimeInterval:timeZoneSeconds];
+                [self alarmNotification:local];
+                
+                NSLog(@"%@", local);
+
+            }
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
     }];
 
 }
@@ -169,29 +205,21 @@
     
     UILocalNotification *notify = [[UILocalNotification alloc] init];
     
-    notify.fireDate = alarmDate;
-    notify.alertTitle = @"wake up!";
-    notify.alertBody = @"TA meeting";
-    //    notify.soundName = @""
+    double timeFactor = [alarmDate timeIntervalSinceNow];
+    
+    if (timeFactor >0){
+        notify.fireDate = alarmDate;
+        notify.alertTitle = @"wake up!";
+        notify.alertBody = @"TA meeting";
+        notify.soundName = @"26961__rfriend__divingalarm.wav";
+        
+    }
+
+
     
     
     
     [[UIApplication sharedApplication] scheduleLocalNotification:notify];
-    
-    
-//    // get date from NSDatePicker
-//    NSDate *date = [datePicker date];
-//    
-//    // format the NSDate to a NSString
-//    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-//    [dateFormat setDateFormat:@"cccc, MMM d, hh:mm aa"];
-//    NSString *dateString = [dateFormat stringFromDate:date];
-//    
-//    // save to Parse
-//    PFObject *addValues= [PFObject objectWithClassName:@"your-class"];
-//    [addValues setObject: dateString forKey:@"your-key"];
-//    [addValues saveInBackground];
-//    
     
 }
 
@@ -202,7 +230,6 @@
     PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
     [logInViewController setDelegate:self];
     
-//     [logInViewController setSignUpController:signUpViewController];
     // Present the log in view controller
     [self presentViewController:logInViewController animated:YES completion:NULL];
 }
