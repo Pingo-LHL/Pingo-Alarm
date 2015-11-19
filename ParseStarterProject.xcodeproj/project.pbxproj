@@ -213,7 +213,12 @@
 				LastUpgradeCheck = 0710;
 				TargetAttributes = {
 					09ABC06C13A1D52D009C3FCF = {
-						DevelopmentTeam = 37Y9P8B6JV;
+						DevelopmentTeam = 2VGL7CT34X;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -350,7 +355,7 @@
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.parse.Pingo-Alarm";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ToyBoxMedia.Chipmunk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -370,7 +375,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.parse.Pingo-Alarm";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ToyBoxMedia.Chipmunk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				VALIDATE_PRODUCT = YES;
