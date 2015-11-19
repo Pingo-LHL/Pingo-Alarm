@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <ParseUI/ParseUI.h>
 
-@interface AlarmViewController : UIViewController
+@interface AlarmViewController : UIViewController   <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
+
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 @end

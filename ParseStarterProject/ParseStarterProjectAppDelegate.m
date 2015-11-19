@@ -45,7 +45,7 @@
     // [PFFacebookUtils initializeFacebook];
     // ****************************************************************************
 
-    [PFUser enableAutomaticUser];
+//    [PFUser enableAutomaticUser];
 
     PFACL *defaultACL = [PFACL ACL];
 
@@ -53,6 +53,15 @@
     [defaultACL setPublicReadAccess:YES];
 
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
+    
+    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+    testObject[@"foo"] = @"bar";
+    [testObject saveInBackground];
+    
+    
+    PFObject *Sam = [PFObject objectWithClassName:@"Sam"];
+    Sam[@"Sam"] = @"Sammy";
+    [Sam saveInBackground];
 
     // Override point for customization after application launch.
 

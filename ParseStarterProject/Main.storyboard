@@ -19,43 +19,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="e6K-Wx-TsU">
-                                <rect key="frame" x="0.0" y="61" width="600" height="215"/>
+                                <rect key="frame" x="0.0" y="61" width="600" height="216"/>
                                 <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="600" id="8wC-7R-c2r"/>
-                                    <constraint firstAttribute="height" constant="215" id="dWm-yK-TeR"/>
-                                </constraints>
                                 <date key="date" timeIntervalSinceReferenceDate="469576423.83093101">
                                     <!--2015-11-18 21:53:43 +0000-->
                                 </date>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BuF-V2-zOl">
-                                <rect key="frame" x="449" y="454" width="48" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <action selector="cancelAlarm:" destination="Fz6-Kt-RR2" eventType="touchUpInside" id="IAf-Mh-u8i"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WW5-6s-Evy">
-                                <rect key="frame" x="153" y="454" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WW5-6s-Evy">
+                                <rect key="frame" x="285" y="365" width="30" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Set"/>
                                 <connections>
                                     <action selector="setAlarm:" destination="Fz6-Kt-RR2" eventType="touchUpInside" id="mb0-aP-UXQ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZz-A9-RTU">
+                                <rect key="frame" x="276" y="521" width="48" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutPressed:" destination="Fz6-Kt-RR2" eventType="touchUpInside" id="sw8-sj-rQ4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BuF-V2-zOl">
+                                <rect key="frame" x="276" y="450" width="48" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelAlarm:" destination="Fz6-Kt-RR2" eventType="touchUpInside" id="IAf-Mh-u8i"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="WW5-6s-Evy" firstAttribute="leading" secondItem="JR9-v8-UQl" secondAttribute="leadingMargin" constant="30" id="2We-s8-yw9"/>
-                            <constraint firstItem="e6K-Wx-TsU" firstAttribute="top" secondItem="kbt-hx-Hu0" secondAttribute="bottom" constant="41" id="DNr-CQ-t2A"/>
-                            <constraint firstItem="LJy-p5-Fu2" firstAttribute="top" secondItem="WW5-6s-Evy" secondAttribute="bottom" constant="116" id="GnM-k9-3LE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="BuF-V2-zOl" secondAttribute="trailing" constant="83" id="SdN-8h-8hE"/>
-                            <constraint firstItem="e6K-Wx-TsU" firstAttribute="leading" secondItem="JR9-v8-UQl" secondAttribute="leadingMargin" constant="-20" id="UjR-9B-T8c"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="e6K-Wx-TsU" secondAttribute="trailing" constant="-20" id="VFA-my-GrN"/>
-                            <constraint firstItem="LJy-p5-Fu2" firstAttribute="top" secondItem="BuF-V2-zOl" secondAttribute="bottom" constant="116" id="zgC-Mh-cP2"/>
+                            <constraint firstItem="e6K-Wx-TsU" firstAttribute="centerX" secondItem="JR9-v8-UQl" secondAttribute="centerX" id="7OP-LC-nne"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="e6K-Wx-TsU" secondAttribute="trailing" constant="-20" id="Ca7-UW-b5h"/>
+                            <constraint firstItem="BuF-V2-zOl" firstAttribute="top" secondItem="WW5-6s-Evy" secondAttribute="bottom" constant="55" id="DFq-Ny-8dc"/>
+                            <constraint firstItem="e6K-Wx-TsU" firstAttribute="leading" secondItem="JR9-v8-UQl" secondAttribute="leadingMargin" constant="-20" id="Saa-RT-OMu"/>
+                            <constraint firstItem="WW5-6s-Evy" firstAttribute="centerX" secondItem="JR9-v8-UQl" secondAttribute="centerX" id="U29-O0-EUB"/>
+                            <constraint firstItem="LJy-p5-Fu2" firstAttribute="top" secondItem="IZz-A9-RTU" secondAttribute="bottom" constant="49" id="XD2-MY-omT"/>
+                            <constraint firstItem="e6K-Wx-TsU" firstAttribute="top" secondItem="kbt-hx-Hu0" secondAttribute="bottom" constant="41" id="cJT-oM-QYB"/>
+                            <constraint firstItem="IZz-A9-RTU" firstAttribute="centerX" secondItem="JR9-v8-UQl" secondAttribute="centerX" id="esU-SH-rvo"/>
+                            <constraint firstItem="BuF-V2-zOl" firstAttribute="centerX" secondItem="JR9-v8-UQl" secondAttribute="centerX" id="mMJ-Z4-6m4"/>
+                            <constraint firstItem="LJy-p5-Fu2" firstAttribute="top" secondItem="BuF-V2-zOl" secondAttribute="bottom" constant="120" id="syq-gl-7Ep"/>
                         </constraints>
                     </view>
                     <connections>
