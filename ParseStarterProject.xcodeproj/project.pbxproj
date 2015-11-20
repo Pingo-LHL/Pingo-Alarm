@@ -17,6 +17,7 @@
 		09ABC08213A1D52D009C3FCF /* ParseStarterProjectAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09ABC08113A1D52D009C3FCF /* ParseStarterProjectAppDelegate.m */; };
 		09ABC08813A1D52E009C3FCF /* ParseStarterProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09ABC08713A1D52E009C3FCF /* ParseStarterProjectViewController.m */; };
 		09BEF34C13D51C3F001BBCDB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09BEF34B13D51C3F001BBCDB /* Security.framework */; };
+		29D17C811BFED27F00F9DE04 /* UtilityTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 29D17C801BFED27F00F9DE04 /* UtilityTableVC.m */; settings = {ASSET_TAGS = (); }; };
 		2BCE22731BFD19BA008CA790 /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCE22721BFD19BA008CA790 /* AlarmViewController.m */; };
 		2BCE22751BFD2ACE008CA790 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BCE22741BFD2ACE008CA790 /* Main.storyboard */; };
 		2BE547DD1BFD5F3300603276 /* default.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2BE547DC1BFD5F3300603276 /* default.wav */; };
@@ -51,6 +52,8 @@
 		09BEF34B13D51C3F001BBCDB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		16ED9816E0CEE49758EF4698 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		1D6D575BEA4BCC263195DBB5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		29D17C7F1BFED27F00F9DE04 /* UtilityTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityTableVC.h; sourceTree = "<group>"; };
+		29D17C801BFED27F00F9DE04 /* UtilityTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityTableVC.m; sourceTree = "<group>"; };
 		2BCE22711BFD19BA008CA790 /* AlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmViewController.h; sourceTree = "<group>"; };
 		2BCE22721BFD19BA008CA790 /* AlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmViewController.m; sourceTree = "<group>"; };
 		2BCE22741BFD2ACE008CA790 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -147,6 +150,8 @@
 				2BCE22741BFD2ACE008CA790 /* Main.storyboard */,
 				814C3AB91B69864600E307BB /* ParseStarterProjectViewController.xib */,
 				09ABC07813A1D52D009C3FCF /* Other Sources */,
+				29D17C7F1BFED27F00F9DE04 /* UtilityTableVC.h */,
+				29D17C801BFED27F00F9DE04 /* UtilityTableVC.m */,
 			);
 			path = ParseStarterProject;
 			sourceTree = "<group>";
@@ -356,6 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BCE22731BFD19BA008CA790 /* AlarmViewController.m in Sources */,
+				29D17C811BFED27F00F9DE04 /* UtilityTableVC.m in Sources */,
 				09ABC07F13A1D52D009C3FCF /* main.m in Sources */,
 				09ABC08213A1D52D009C3FCF /* ParseStarterProjectAppDelegate.m in Sources */,
 				09ABC08813A1D52E009C3FCF /* ParseStarterProjectViewController.m in Sources */,

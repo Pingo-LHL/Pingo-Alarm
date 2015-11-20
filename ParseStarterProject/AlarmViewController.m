@@ -11,6 +11,8 @@
 
 @interface AlarmViewController ()
 @property (weak, nonatomic) IBOutlet UIDatePicker *alarmPicker;
+@property (weak, nonatomic) IBOutlet UITextField *messageTextField;
+@property (nonatomic) NSString *selectedUser;
 
 @end
 
@@ -159,18 +161,31 @@
     PFObject *alarmObject = [PFObject objectWithClassName:@"AlarmObject"];
     alarmObject[@"dateObj"] = self.datePicker.date;
     alarmObject[@"createdBy"] = [PFUser currentUser].username;
-    alarmObject[@"createdFor"] = @"sam";
+    
+    
+//    if (self.selectedUser == nil) {
+//        
+//        
+//        
+//    }
+    
+    
+    
+    alarmObject[@"createdFor"] = self.selectedUser;
+    
+    alarmObject[@"mesage"] = self.messageTextField.text;
+    
     
     [alarmObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             // The object has been saved.
             
             if (alarmObject[@"createdFor"] == [PFUser currentUser].username) {
-                [self alarmNotification:self.datePicker.date];
+                [self alarmNotification:self.datePicker.date message:self.messageTextField.text];
             } else {
                 // send a push
                 PFQuery *pushAlarm = [PFInstallation query];
-                [pushAlarm whereKey:@"username" equalTo:@"sam"]; // Set channel
+                [pushAlarm whereKey:@"username" equalTo:self.selectedUser]; // Set channel
                 
                 // Send push notification to query
                 PFPush *push = [[PFPush alloc] init];
@@ -202,16 +217,17 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
-            NSLog(@"Successfully retrieved %d alarms.", objects.count);
+            NSLog(@"Successfully retrieved %lu alarms.", (unsigned long)objects.count);
             // Do something with the found objects
             for (PFObject *object in objects) {
                 NSLog(@"%@", object.objectId);
-
+                
+                NSString *parseMessage = object[@"mesage"];
                 NSDate *utcTime = object[@"dateObj"];
                 NSTimeInterval timeZoneSeconds = [[NSTimeZone localTimeZone] secondsFromGMT];
                 NSLog(@"%f", timeZoneSeconds);
-//                NSDate *local = [utcTime dateByAddingTimeInterval:timeZoneSeconds];
-                [self alarmNotification:utcTime];
+//                NSDate *local = [utcTime dateByAddingTimeInterval:timeZoneSeconds];`
+                [self alarmNotification:utcTime message:parseMessage];
                 
                 NSLog(@"%@", utcTime);
 
@@ -224,7 +240,7 @@
 
 }
 
-- (void)alarmNotification: (NSDate *) alarmDate {
+- (void)alarmNotification: (NSDate *) alarmDate message:(NSString *)msg {
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"dd-MMM, h:mm:ss a"];
@@ -237,8 +253,9 @@
 
         notify.fireDate = alarmDate;
         notify.alertTitle = @"Time: ";
-        notify.alertBody = [formatter stringFromDate:alarmDate];
-        NSLog(@"%@",notify.alertBody);
+        notify.alertBody = msg;
+    
+        NSLog(@"%@",msg);
         notify.soundName = @"26961__rfriend__divingalarm.wav";
         
     [[UIApplication sharedApplication] scheduleLocalNotification:notify];
@@ -255,6 +272,26 @@
     // Present the log in view controller
     [self presentViewController:logInViewController animated:YES completion:NULL];
 }
+
+-(void) usernameSelected:(NSString *)name {
+    
+    self.selectedUser = name;
+    
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier  isEqual: @"showUserList"]) {
+        UtilityTableVC *userList = (UtilityTableVC *)segue.destinationViewController;
+        userList.delegate = self;
+    }
+    
+}
+
+
+
+
+
 
 
 /*
