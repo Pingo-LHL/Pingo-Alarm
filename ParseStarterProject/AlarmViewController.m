@@ -20,13 +20,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
-    [NSTimer scheduledTimerWithTimeInterval:30.0f
-                                     target:self
-                                   selector:@selector(retriveAlarm:)
-                                   userInfo:nil
-                                    repeats:YES];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -73,7 +66,10 @@
 // Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
     [self dismissViewControllerAnimated:YES completion:NULL];
+    
+    [self registerForPush];
 }
+
 
 // Sent to the delegate when the log in attempt fails.
 - (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
@@ -112,6 +108,7 @@
 // Sent to the delegate when a PFUser is signed up.
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
     [self dismissViewControllerAnimated:YES completion:NULL];
+    [self registerForPush];
 }
 
 // Sent to the delegate when the sign up attempt fails.
@@ -123,6 +120,22 @@
 - (void)signUpViewControllerDidCancelSignUp:(PFSignUpViewController *)signUpController {
     NSLog(@"User dismissed the signUpViewController");
 }
+
+
+-(void)registerForPush {
+    
+    UIApplication *application = [UIApplication sharedApplication];
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+                                                        UIUserNotificationTypeBadge |
+                                                        UIUserNotificationTypeSound);
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+                                                                                 categories:nil];
+        [application registerUserNotificationSettings:settings];
+        [application registerForRemoteNotifications];
+    }
+}
+
 /*
  #pragma mark - Navigation
  
@@ -146,17 +159,26 @@
     PFObject *alarmObject = [PFObject objectWithClassName:@"AlarmObject"];
     alarmObject[@"dateObj"] = self.datePicker.date;
     alarmObject[@"createdBy"] = [PFUser currentUser].username;
-    alarmObject[@"createdFor"] = @"kelo";
+    alarmObject[@"createdFor"] = @"sam";
     
-    
-    
-   
     [alarmObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             // The object has been saved.
             
             if (alarmObject[@"createdFor"] == [PFUser currentUser].username) {
                 [self alarmNotification:self.datePicker.date];
+            } else {
+                // send a push
+                PFQuery *pushAlarm = [PFInstallation query];
+                [pushAlarm whereKey:@"username" equalTo:@"sam"]; // Set channel
+                
+                // Send push notification to query
+                PFPush *push = [[PFPush alloc] init];
+                [push setQuery:pushAlarm];
+                [push setMessage:@"Hey an alarm has been set for you."];
+                [push sendPushInBackground];
+                
+            
             }
         } else {
             // There was a problem, check error.description
@@ -172,7 +194,7 @@
     NSLog(@"cancel alarm");
 }
 
--(void)retriveAlarm:(NSTimer*) timer{
+-(void)retrieveAlarm{
     PFQuery *query = [PFQuery queryWithClassName:@"AlarmObject"];
     
     [query whereKey:@"createdFor" equalTo:[PFUser currentUser].username];
@@ -187,10 +209,11 @@
 
                 NSDate *utcTime = object[@"dateObj"];
                 NSTimeInterval timeZoneSeconds = [[NSTimeZone localTimeZone] secondsFromGMT];
-                NSDate *local = [utcTime dateByAddingTimeInterval:timeZoneSeconds];
-                [self alarmNotification:local];
+                NSLog(@"%f", timeZoneSeconds);
+//                NSDate *local = [utcTime dateByAddingTimeInterval:timeZoneSeconds];
+                [self alarmNotification:utcTime];
                 
-                NSLog(@"%@", local);
+                NSLog(@"%@", utcTime);
 
             }
         } else {
@@ -203,22 +226,21 @@
 
 - (void)alarmNotification: (NSDate *) alarmDate {
     
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd-MMM, h:mm:ss a"];
+    [formatter setTimeZone:[NSTimeZone localTimeZone]];
+
+    
     UILocalNotification *notify = [[UILocalNotification alloc] init];
     
-    double timeFactor = [alarmDate timeIntervalSinceNow];
-    
-    if (timeFactor >0){
+//    double timeFactor = [alarmDate timeIntervalSinceNow];
+
         notify.fireDate = alarmDate;
-        notify.alertTitle = @"wake up!";
-        notify.alertBody = @"TA meeting";
+        notify.alertTitle = @"Time: ";
+        notify.alertBody = [formatter stringFromDate:alarmDate];
+        NSLog(@"%@",notify.alertBody);
         notify.soundName = @"26961__rfriend__divingalarm.wav";
         
-    }
-
-
-    
-    
-    
     [[UIApplication sharedApplication] scheduleLocalNotification:notify];
     
 }

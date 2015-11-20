@@ -20,6 +20,17 @@
 
 #import "ParseStarterProjectAppDelegate.h"
 #import "ParseStarterProjectViewController.h"
+#import "AlarmViewController.h"
+
+
+#import <AVFoundation/AVFoundation.h>
+
+
+@interface ParseStarterProjectAppDelegate()
+
+@property (nonatomic, strong) AVAudioPlayer *audioPlayer;
+
+@end
 
 @implementation ParseStarterProjectAppDelegate
 
@@ -79,22 +90,18 @@
             [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
         }
     }
-
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
-    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-        UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
-                                                        UIUserNotificationTypeBadge |
-                                                        UIUserNotificationTypeSound);
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
-                                                                                 categories:nil];
-        [application registerUserNotificationSettings:settings];
-        [application registerForRemoteNotifications];
-    } else
-#endif
-    {
-        [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
-                                                         UIRemoteNotificationTypeAlert |
-                                                         UIRemoteNotificationTypeSound)];
+    
+    
+    if ([PFUser currentUser]) {
+        if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+            UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+                                                            UIUserNotificationTypeBadge |
+                                                            UIUserNotificationTypeSound);
+            UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+                                                                                     categories:nil];
+            [application registerUserNotificationSettings:settings];
+            [application registerForRemoteNotifications];
+        }
     }
 
     return YES;
@@ -105,6 +112,10 @@
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
+      if ([PFUser currentUser]) {
+          [currentInstallation setObject:[PFUser currentUser].username forKey:@"username"];
+      }
+    
     [currentInstallation saveInBackground];
 
     [PFPush subscribeToChannelInBackground:@"" block:^(BOOL succeeded, NSError *error) {
@@ -127,11 +138,35 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     [PFPush handlePush:userInfo];
-
+    
+    
+//    UINavigationController *navCOntroller = [self.window rootViewController];
+    AlarmViewController *alarmController = (AlarmViewController *)[self.window rootViewController];
+    [alarmController retrieveAlarm];
     if (application.applicationState == UIApplicationStateInactive) {
         [PFAnalytics trackAppOpenedWithRemoteNotificationPayload:userInfo];
     }
 }
+//- (void)playAlertSound{
+//   	NSURL *soundURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"26961__rfriend__divingalarm" ofType:@"wav"]];
+//
+//    NSError *error = nil;
+//    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:&error];
+//    
+//    if (error)
+//        NSLog(@"Audio Player init error: %@", error);
+//    
+//    [self.audioPlayer prepareToPlay];
+//    [self.audioPlayer play];
+//}
+//
+//-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
+//    
+//    [self playAlertSound];
+//    
+//}
+
+
 
 ///////////////////////////////////////////////////////////
 // Uncomment this method if you want to use Push Notifications with Background App Refresh

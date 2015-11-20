@@ -13,4 +13,6 @@
 
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
+-(void)retrieveAlarm;
+
 @end

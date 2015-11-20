@@ -19,15 +19,15 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-    testObject[@"foo"] = @"bar";
-    [testObject saveInBackground];
-    
-    
-    PFObject *Sam = [PFObject objectWithClassName:@"Sam"];
-    Sam[@"Sam"] = @"Sammy";
-    [Sam saveInBackground];
+//    
+//    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+//    testObject[@"foo"] = @"bar";
+//    [testObject saveInBackground];
+//    
+//    
+//    PFObject *Sam = [PFObject objectWithClassName:@"Sam"];
+//    Sam[@"Sam"] = @"Sammy";
+//    [Sam saveInBackground];
 }
 
 - (void)didReceiveMemoryWarning {
