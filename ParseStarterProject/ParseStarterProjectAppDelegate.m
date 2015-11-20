@@ -147,24 +147,24 @@
         [PFAnalytics trackAppOpenedWithRemoteNotificationPayload:userInfo];
     }
 }
-//- (void)playAlertSound{
-//   	NSURL *soundURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"26961__rfriend__divingalarm" ofType:@"wav"]];
-//
-//    NSError *error = nil;
-//    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:&error];
-//    
-//    if (error)
-//        NSLog(@"Audio Player init error: %@", error);
-//    
-//    [self.audioPlayer prepareToPlay];
-//    [self.audioPlayer play];
-//}
-//
-//-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
-//    
-//    [self playAlertSound];
-//    
-//}
+- (void)playAlertSound{
+   	NSURL *soundURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"26961__rfriend__divingalarm" ofType:@"wav"]];
+
+    NSError *error = nil;
+    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:&error];
+    
+    if (error)
+        NSLog(@"Audio Player init error: %@", error);
+    
+    [self.audioPlayer prepareToPlay];
+    [self.audioPlayer play];
+}
+
+-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
+    
+    [self playAlertSound];
+    
+}
 
 
 
